@@ -1,6 +1,6 @@
 # 软件环境
 1、ubuntu 16.04以上
-2|、安装git和docker
+2、安装git和docker
 
 # 拉取仓库
 1、拉取打包源文件项目
@@ -21,7 +21,7 @@ git clone https://github.com/yzsoft-eth/nftnode.git
 4、docker正常运行后，如需提供对外的rpc及p2p通迅，请开启宿主机防火墙的8888和9010端口
 
 # 命令行命令
-1、和链交互、管理钱包：clenft
+1、和EOS区块链交互、管理钱包：clenft
 2、区块产生、操作链API：nodenft
 3、和钱包交互，用于存储私钥：ksdnft
 

@@ -21,14 +21,14 @@ git clone https://github.com/yzsoft-eth/nftnode.git
 4、docker正常运行后，如需提供对外的rpc及p2p通迅，请开启宿主机防火墙的8888和9010端口
 
 # 命令行命令
-1、和EOS区块链交互、管理钱包：clenft
+1、和链交互、管理钱包：clenft
 2、区块产生、操作链API：nodenft
 3、和钱包交互，用于存储私钥：ksdnft
 
 # 钱包及账号的操作
 1、进入容器：docker exec -ti yz-chain-agent-node bash
 2、创建钱包：clenft wallet create -n yzagent --to-console
-     记录并保存下屏幕上显示的钱包密码（如：PW5********************bFE4Sw）
+   记录并保存下屏幕上显示的钱包密码（如：PW5********************bFE4Sw）
 3、创建公私密钥对并塞入钱包：clenft wallet create_key -n  yzagent
-    Copy屏幕上显示以NFT开头的密钥对公钥（如：NFT********************DodH）
+   Copy屏幕上显示以NFT开头的密钥对公钥（如：NFT********************DodH）
 4、将上步的公钥以及需要创建的联盟账号名提供给我们，由我们平台创建及激活联盟账号

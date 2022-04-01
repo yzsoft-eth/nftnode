@@ -27,10 +27,7 @@ git clone https://github.com/yzsoft-eth/nftnode.git
 # 钱包及账号的操作
 1、进入容器：docker exec -ti yz-chain-agent-node bash
 2、创建钱包：clenft wallet create -n yzagent --to-console
-     记录并保存下屏幕上显示的钱包密码（如：PW5********************bFE4Sw）
-3、创建公私密钥对并塞入钱包，用于下步账号的创建：clenft wallet create_key -n  yzagent
-    Copy屏幕上显示以NFT开头的密钥对公钥，后续创建账号需要（如：NFT********************DodH）
-4、创建账号
-     clenft system newaccount nftio agentuser  NFT7Vy1pXqgycdPmPGct7T6tMPV6543jLkjMXbQdGB5ibkhk6DodH
-5、成功创建账号后，请将账号名和公钥提供给我们，由我们激活。
-说明：上述各步操作，如提示钱包锁定，请使用命令解锁钱包：clenft wallet unlock -n yzagent --password PW5********************bFE4Sw
+     记录并保存下屏幕上显示的钱包密码（如：PW5********************bFE4Sw）：PW5HrVhU8qaenSoGmAq7xXSeAo76vT4VYnisWEgMP1J5U1rbFE4Sw
+3、创建公私密钥对并塞入钱包：clenft wallet create_key -n  yzagent
+    Copy屏幕上显示以NFT开头的密钥对公钥（如：NFT********************DodH）
+4、将上步的公钥以及需要创建的联盟账号名提供给我们，由我们平台创建及激活联盟账号

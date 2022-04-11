@@ -33,6 +33,12 @@ git clone https://github.com/yzsoft-eth/nftnode.git
    Copy屏幕上显示以NFT开头的密钥对公钥（如：NFT********************DodH）
 4、将上步的公钥以及需要创建的联盟账号名提供给我们，由我们平台创建及激活联盟账号
 
+4、创建账号
+     clenft system newaccount creater agentuser  NFT7Vy1pXqgycdPmPGct7T6tMPV6543jLkjMXbQdGB5ibkhk6DodH
+5、成功创建账号后，请将账号名和公钥提供给我们，由我们激活。
+6、退出docker容器，回到宿主机：exit
+说明：上述各步操作，如提示钱包锁定，请使用命令解锁钱包：clenft wallet unlock -n yzagent --password PW5********************bFE4Sw
+
 # 链api
 
 域名：nft.chinaqking.com/v1
@@ -112,3 +118,7 @@ curl -X POST https://nft.chinaqking.com/v1/chain/push_transaction -d '{
 {
     'transaction_id' = "交易ID"
 }
+
+# https://steemit.com/eoskorea/@clayop/easy-docker-guide-for-eos
+# https://eoswiki.readthedocs.io/zh_CN/latest/Docker%E5%AE%B9%E5%99%A8/
+# EOS quick start：https://www.jianshu.com/p/4fe40e8529d3

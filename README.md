@@ -32,7 +32,13 @@ git clone https://github.com/yzsoft-eth/nftnode.git
 3、创建公私密钥对并塞入钱包：clenft wallet create_key -n  yzagent
    Copy屏幕上显示以NFT开头的密钥对公钥（如：NFT********************DodH）
 4、将上步的公钥以及需要创建的联盟账号名提供给我们，由我们平台创建及激活联盟账号
-5、退出docker容器，回到宿主机：exit
+5、查看钱包中的密钥对，需要输入钱包密码解锁：clenft wallet private_keys
+     执行上述命令后，按提示在password: 后输入钱包密码，可获取到钱包里全部的公私钥对
+     password: [[
+        "NFT****************************************************************",
+        "5Hp****************************************************************"
+    ]]
+6、退出docker容器，回到宿主机：exit
 说明：上述各步操作，如提示钱包锁定，请使用命令解锁钱包：clenft wallet unlock -n yzagent --password PW5********************bFE4Sw
 
 # 链api

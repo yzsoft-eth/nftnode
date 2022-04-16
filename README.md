@@ -38,9 +38,13 @@ git clone https://github.com/yzsoft-eth/nftnode.git
 
 5、查看钱包中的密钥对，需要输入钱包密码解锁：clenft wallet private_keys
      执行上述命令后，按提示在password: 后输入钱包密码，可获取到钱包里全部的公私钥对
+    
      password: [[
+        
         "NFT****************************************************************",
+        
         "5Hp****************************************************************"
+        
     ]]
     
 6、退出docker容器，回到宿主机：exit
@@ -56,15 +60,23 @@ git clone https://github.com/yzsoft-eth/nftnode.git
 调用url：/chain/get_info
 调用方法：POST
 调用参数：无
-返回值：返回包含当前链区块最新高度的总体信息
+返回值：
+   返回包含当前链区块最新高度的总体信息
 
-{
-    "server_version": "节点版本",
-    "head_block_num": "链头区块序号",
-    "lase_irreversible_block_num": "不可逆区块号",
-    "head_block_id": "链头区块ID",
-    "head_block_time": "链头区块生成时间",
-    "head_block_producer": "链头区块出块账号"
+
+   {
+      
+      "server_version": "节点版本",
+      
+      "head_block_num": "链头区块序号",
+      
+      "lase_irreversible_block_num": "不可逆区块号",
+      
+      "head_block_id": "链头区块ID",
+      
+      "head_block_time": "链头区块生成时间",
+      
+      "head_block_producer": "链头区块出块账号"
     
 }
 

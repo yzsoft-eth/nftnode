@@ -87,14 +87,22 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_info
 调用url：/chain/get_block
 调用方法：POST
 调用参数：JSON Object
+
+
 {
-  "block_num_or_id": "字符串，要提取数据的区块序号或ID"
+
+    "block_num_or_id": "字符串，要提取数据的区块序号或ID"
+  
 }
+
 返回值：返回查询到描述指定区块数据的JSON对象
+
 示例：
+
 curl -X POST https://nft.chinaqking.com/v1/chain/get_block -d '{ 
     "block_num_or_id": "10444813"
 }'
+
 
 3、查询指定账号的描述信息
 调用url：/chain/get_account

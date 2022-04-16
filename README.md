@@ -286,13 +286,21 @@ return（获取signatures）：{
 }
 
 7.6、提交交易
+
 curl -X POST https://nft.chinaqking.com/v1/chain/push_transaction -d '{ 
+
   "compression": "none",    // "是否压缩格式，布尔类型，默认值：false"
+  
   "transaction": {
+  
     "expiration": "2022-04-12T09:20:37.000",
+    
     "ref_block_num": 5183489,
+    
     "ref_block_prefix": 3622201311,
+    
     "context_free_actions": [],
+    
     "actions": [
         {
             "account": "nftio.nftc",

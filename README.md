@@ -188,102 +188,191 @@ return（获取到binargs）：{
 
 7.2、获取当前最新的区块编号
 curl -X POST https://nft.chinaqking.com/v1/chain/get_info
-return（获取到head_block_num）：{
+
+return（获取到head_block_num）：
+{
     "server_version":"26a4d285",
+    
     "chain_id":"4e020515db057c0f6ae6dfadb134d2252c2ea8a4e8fdd4d8fd4543d23f31e558",
+    
     "head_block_num":5103489,
+    
     "last_irreversible_block_num":5103451,
     "last_irreversible_block_id":"004ddf5b6f837383b7b7ecb7f6db38f9b43109325f055a6392fd2ddbefd834b0","head_block_id":"004ddf81c58427c5df67e6d75b35198f88067477b4bd49dd8b07501117bd040a",
+    
     "head_block_time":"2022-04-12T08:20:37.000",
+    
     "head_block_producer":"yznft",
+    
     "virtual_block_cpu_limit":100000000,
+    
     "virtual_block_net_limit":1048576000,
+    
     "block_cpu_limit":99900,
+    
     "block_net_limit":1048576,
+    
     "server_version_string":"v2.1.0",
+    
     "fork_db_head_block_num":5103489,
+    
     "fork_db_head_block_id":"004ddf81c58427c5df67e6d75b35198f88067477b4bd49dd8b07501117bd040a",
+    
     "server_full_version_string":"v2.1.0-26a4d285d0be1052d962149e431eb81500782991-dirty",
+    
     "last_irreversible_block_time":"2022-04-12T08:19:59.000"
+    
 }
+
 
 7.3、获取区块详情
 curl -X POST https://nft.chinaqking.com/v1/chain/get_block -d '{
     "block_num_or_id":"5103489"
 }'
-return（获取到timestamp 和ref_block_prefix）：{
+
+return（获取到timestamp 和ref_block_prefix）：
+
+{
     "timestamp":"2022-04-12T08:20:37.000",
+    
     "producer":"yznft",
+    
     "confirmed":0,
     "previous":"004ddf8078bf7a2285b944ab3df9a9b087815e8c653aa32eef39276536297918","transaction_mroot":"0000000000000000000000000000000000000000000000000000000000000000","action_mroot":"9c9021c8b38fc5a03a938b4134b25182d2feb365e6f5e4c856750dfbbfcad441",
+    
     "schedule_version":3,
+    
     "new_producers":null,"producer_signature":"SIG_K1_JxbXucjcSkjQzQED2bDeSkGK3EqXmeEKq167PNWBLhxoj6VeLh3c7zuDd1UP1vRkVaZWTkCdyLJ78G4uJtXU6jXEYaxtPK",
+    
     "transactions":[],
+    
     "id":"004ddf81c58427c5df67e6d75b35198f88067477b4bd49dd8b07501117bd040a",
+    
     "block_num":5103489,
+    
     "ref_block_prefix":3622201311
+    
 }
+
 
 7.4、查询/记录转账交易用户guang1234555的公钥（用于交易签名）：NFT54ReQMf7XZj9MdqusDVCRoYPaeP9p8zQ1TPqAQnUW9kjwR31uB
 
 7.5、签署交易
 调用参数：JSON Arrary
+
 [{
     expiration："过期时间。这里将timestamp加上了60分钟。可以根据需要来增加时长",
+    
     ref_block_num："前面获取的最新区块号",
+    
     ref_block_prefix："前面获取的ref_block_prefix",
+    
     account："合约名称。这里是转账NFTC，使用的是nftio.nftc",
+    
     name："调用的合约方法。这里调用的是转账方法transfer",
+    
     actor："调用者。这里相当于转账方",
+    
     permission："使用的权限类型",
+    
     data："之前生成的bin字符串",
+    
     signatures："签署交易后生成的签名字符串",
+    
 }]
+
 curl -X POST https://nft.chinaqking.com/v1/wallet/sign_transaction -d '[{
+
         "ref_block_num": 5103489,
+        
         "ref_block_prefix": 3622201311,
+        
         "expiration": "2022-04-12T09:20:37.000",
+        
         "actions": [{
+        
             "account": "nftio.nftc",
+            
             "name": "extransfer",
+            
             "authorization": [{
+            
                 "actor": "guang1234555",
+                
                 "permission": "active"
+                
             }],
+            
             "data": "504a214304368d6650c8082164863f4200e1f50500000000074e4654430000000c6275792f7472616e73666572"
+            
         }],
+        
         "signatures": []
+        
     },
+    
     ["NFT54ReQMf7XZj9MdqusDVCRoYPaeP9p8zQ1TPqAQnUW9kjwR31uB"], 
+    
     "4e020515db057c0f6ae6dfadb134d2252c2ea8a4e8fdd4d8fd4543d23f31e558"
 ]'
-return（获取signatures）：{
+
+return（获取signatures）：
+
+{
     "expiration": "2022-04-12T09:20:37.000",
+    
     "ref_block_num": 5183489,
+    
     "ref_block_prefix": 3622201311,
+    
     "max_net_usage_words": 0,
+    
     "max_cpu_usage_ms": 0,
+    
     "delay_sec": 0,
+    
     "context_free_actions": [],
+    
     "actions": [
+    
         {
+        
             "account": "nftio.nftc",
+            
             "name": "extransfer",
+            
             "authorization": [
+            
                 {
+                
                     "actor": "guang1234555",
+                    
                     "permission": "active"
+                    
                 }
+                
             ],
+            
             "data": "504a214304368d6650c8082164863f4200e1f50500000000074e4654430000000c6275792f7472616e73666572"
+            
         }
+        
     ],
+    
+    
     "transaction_extensions": [],
+    
     "signatures": [
+    
         "SIG_K1_**********beJYmA**********tFmywezC**********P4V7NVnJodN**********"
+        
     ],
+    
     "context_free_data": []
+    
 }
+
+
 
 7.6、提交交易
 

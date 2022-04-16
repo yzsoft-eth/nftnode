@@ -407,140 +407,276 @@ curl -X POST https://nft.chinaqking.com/v1/chain/push_transaction -d '{
   },
   "signatures": [
         "SIG_K1_**********beJYmA**********tFmywezC**********P4V7NVnJodN**********"
+        
    ]    // "签名数组"  
 }'
-return（包含交易ID：transaction_id）：{
+
+
+return（包含交易ID：transaction_id）：
+
+{
     "transaction_id": "f6195473e59ee33ea50fe5f69fb4460b361e963e02613be48fbc1b536863c56e",
+    
     "processed": {
+    
         "id": "f6195473e59ee33ea50fe5f69fb4460b361e963e02613be48fbc1b536863c56e",
+        
         "receipt": {
+        
             "status": "executed",
+            
             "cpu_usage_us": 1537,
+            
             "net_usage_words": 17
+            
         },
+        
         "elapsed": 1537,
+        
         "net_usage": 136,
+        
         "scheduled": false,
+        
         "action_traces": [
+        
             {
+            
                 "receipt": {
+                
                     "receiver": "nftio.nftc",
+                    
                     "act_digest": "03969694b3defe3cc1107ba4279aa3265e9e96aec1a5615b6d779498cdca63a1",
+                    
                     "global_sequence": 32142292,
+                    
                     "recv_sequence": 1716642,
+                    
                     "auth_sequence": [
+                    
                         [
+                        
                             "guang1234555",
+                            
                             45
+                            
                         ]
+                        
                     ],
+                    
                     "code_sequence": 1,
+                    
                     "abi_sequence": 1
+                    
                 },
+                
                 "act": {
+                
                     "account": "nftio.nftc",
+                    
                     "name": "extransfer",
+                    
                     "authorization": [
+                    
                         {
+                        
                             "actor": "guang1234555",
+                            
                             "permission": "active"
+                            
                         }
+                        
                     ],
+                    
                     "data": {
+                    
                         "from": "guang1234555",
-                        "to": "cczsgt111345",                        
+                        
+                        "to": "cczsgt111345",    
+                        
                         "quantity":"10.0000000 NFTC", 
+                        
                         "memo":"buy/transfer"
+                        
                     },
+                    
                     "hex_data": "504a214304368d66104208ffe1abaac600ca9a3b00000000074e46544300000000"
+                    
                 },
+                
                 "elapsed": 942,
+                
                 "cpu_usage": 0,
+                
                 "console": "",
+                
                 "total_cpu_usage": 0,
+                
                 "trx_id": "f6195473e59ee33ea50fe5f69fb4460b361e963e02613be48fbc1b536863c56e",
+                
                 "inline_traces": [
+                                
                     {
+                    
                         "receipt": {
+                        
                             "receiver": "cczsgt111345",
+                            
                             "act_digest": "03969694b3defe3cc1107ba4279aa3265e9e96aec1a5615b6d779498cdca63a1",
+                            
                             "global_sequence": 32142293,
+                            
                             "recv_sequence": 16,
+                            
                             "auth_sequence": [
+                            
                                 [
                                     "cczsgt111345",
+                                    
                                     38
+                                    
                                 ]
+                                
                             ],
+                            
                             "code_sequence": 3,
+                            
                             "abi_sequence": 3
+                            
                         },
+                        
                         "act": {
+                        
                             "account": "nftio.nftc",
+                            
                             "name": "extransfer",
+                            
                             "authorization": [
+                            
                                 {
+                                
                                     "actor": "guang1234555",
+                                    
                                     "permission": "active"
+                                    
                                 }
+                                
                             ],
+                            
                             "data": {
+                            
                                 "from": "guang1234555",
-                                "to": "cczsgt111345",                        
+                                
+                                "to": "cczsgt111345",     
+                                
                                 "quantity":"10.0000000 NFTC", 
+                                
                                 "memo":"buy/transfer"
+                                
                             },
+                            
                             "hex_data": "504a214304368d66104208ffe1abaac600ca9a3b00000000074e46544300000000"
+                            
                         },
+                        
                         "elapsed": 100,
+                        
                         "cpu_usage": 0,
+                        
                         "console": "",
+                        
                         "total_cpu_usage": 0,
+                        
                         "trx_id": "f6195473e59ee33ea50fe5f69fb4460b361e963e02613be48fbc1b536863c56e",
+                        
                         "inline_traces": []
+                        
                     },
+                    
                     {
+                    
                         "receipt": {
+                        
                             "receiver": "cczsgt111345",
+                            
                             "act_digest": "03969694b3defe3cc1107ba4279aa3265e9e96aec1a5615b6d779498cdca63a1",
+                            
                             "global_sequence": 32142294,
+                            
                             "recv_sequence": 7,
+                            
                             "auth_sequence": [
+                            
                                 [
                                     "cczsgt111345",
+                                    
                                     39
                                 ]
+                                
                             ],
+                            
                             "code_sequence": 3,
+                            
                             "abi_sequence": 3
+                            
                         },
+                        
                         "act": {
+                        
                             "account": "nftio.nftc",
+                            
                             "name": "extransfer",
+                            
                             "authorization": [
+                            
                                 {
+                                
                                     "actor": "guang1234555",
+                                    
                                     "permission": "active"
+                                    
                                 }
+                                
                             ],
+                            
                             "data": {
+                            
                                 "from": "guang1234555",
-                                "to": "cczsgt111345",                        
+                                
+                                "to": "cczsgt111345",    
+                                
                                 "quantity":"10.0000000 NFTC", 
+                                
                                 "memo":"buy/transfer"
+                                
                             },
+                            
                             "hex_data": "504a214304368d66104208ffe1abaac600ca9a3b00000000074e46544300000000"
+                            
                         },
+                        
                         "elapsed": 23,
+                        
                         "cpu_usage": 0,
+                        
                         "console": "",
+                        
                         "total_cpu_usage": 0,
+                        
                         "trx_id": "f6195473e59ee33ea50fe5f69fb4460b361e963e02613be48fbc1b536863c56e",
+                        
                         "inline_traces": []
+                        
                     }
+                    
                 ]
+                
             }
+            
         ],
+        
         "except": null
+        
     }
+    
 }
+

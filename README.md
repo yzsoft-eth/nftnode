@@ -27,19 +27,26 @@ git clone https://github.com/yzsoft-eth/nftnode.git
 
 # 钱包及账号的操作
 1、进入容器：docker exec -ti yz-chain-agent-node bash
+
 2、创建钱包：clenft wallet create -n yzagent --to-console
    记录并保存下屏幕上显示的钱包密码（如：PW5********************bFE4Sw）
+   
 3、创建公私密钥对并塞入钱包：clenft wallet create_key -n  yzagent
    Copy屏幕上显示以NFT开头的密钥对公钥（如：NFT********************DodH）
+   
 4、将上步的公钥以及需要创建的联盟账号名提供给我们，由我们平台创建及激活联盟账号
+
 5、查看钱包中的密钥对，需要输入钱包密码解锁：clenft wallet private_keys
      执行上述命令后，按提示在password: 后输入钱包密码，可获取到钱包里全部的公私钥对
      password: [[
         "NFT****************************************************************",
         "5Hp****************************************************************"
     ]]
+    
 6、退出docker容器，回到宿主机：exit
+
 说明：上述各步操作，如提示钱包锁定，请使用命令解锁钱包：clenft wallet unlock -n yzagent --password PW5********************bFE4Sw
+
 
 # 链api
 
@@ -50,6 +57,7 @@ git clone https://github.com/yzsoft-eth/nftnode.git
 调用方法：POST
 调用参数：无
 返回值：返回包含当前链区块最新高度的总体信息
+
 {
     "server_version": "节点版本",
     "head_block_num": "链头区块序号",
@@ -57,7 +65,9 @@ git clone https://github.com/yzsoft-eth/nftnode.git
     "head_block_id": "链头区块ID",
     "head_block_time": "链头区块生成时间",
     "head_block_producer": "链头区块出块账号"
+    
 }
+
 示例：
 curl -X POST https://nft.chinaqking.com/v1/chain/get_info
 

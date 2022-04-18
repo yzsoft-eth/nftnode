@@ -185,11 +185,14 @@ curl -X POST https://nft.chinaqking.com/v1/history/get_transaction -d '{
   "packed_context_free_data"："上下文无关的数据",
   "packed_tx"："序列化的交易数据"
 }
+
 返回值：调用的返回结果包含交易ID
+
 示例：
 curl -X POST https://nft.chinaqking.com/v1/chain/push_transaction -d '{ 
     ...
 }'
+
 返回结果：
 {
     'transaction_id' = "交易ID"
@@ -210,6 +213,7 @@ curl -X POST https://nft.chinaqking.com/v1/chain/abi_json_to_bin -d '{
         "memo":"buy/transfer"
     }
 }'
+
 return（获取到binargs）：{
     "binargs":"504a214304368d6650c8082164863f4200e1f50500000000074e4654430000000c6275792f7472616e73666572"
 }
@@ -218,6 +222,7 @@ return（获取到binargs）：{
 curl -X POST https://nft.chinaqking.com/v1/chain/get_info
 
 return（获取到head_block_num）：
+
 {
     "server_version":"26a4d285",
     
@@ -261,6 +266,7 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_block -d '{
 return（获取到timestamp 和ref_block_prefix）：
 
 {
+    
     "timestamp":"2022-04-12T08:20:37.000",
     
     "producer":"yznft",
@@ -289,6 +295,7 @@ return（获取到timestamp 和ref_block_prefix）：
 调用参数：JSON Arrary
 
 [{
+    
     expiration："过期时间。这里将timestamp加上了60分钟。可以根据需要来增加时长",
     
     ref_block_num："前面获取的最新区块号",
@@ -347,6 +354,7 @@ curl -X POST https://nft.chinaqking.com/v1/wallet/sign_transaction -d '[{
 return（获取signatures）：
 
 {
+    
     "expiration": "2022-04-12T09:20:37.000",
     
     "ref_block_num": 5183489,
@@ -443,6 +451,7 @@ curl -X POST https://nft.chinaqking.com/v1/chain/push_transaction -d '{
 return（包含交易ID：transaction_id）：
 
 {
+    
     "transaction_id": "f6195473e59ee33ea50fe5f69fb4460b361e963e02613be48fbc1b536863c56e",
     
     "processed": {

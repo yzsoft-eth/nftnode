@@ -1,5 +1,6 @@
 # 软件环境
 1、ubuntu 16.04以上
+
 2、安装git和docker
 
 # 拉取仓库
@@ -8,21 +9,28 @@ git clone https://github.com/yzsoft-eth/nftnode.git
 
 # 打包 Dock File
 1、进入git下的项目目录nftnode下的打包目录eos-nft/docker
+
 2、执行打包命令：docker build -t yz-chain-nft:v2.1.0 .
 
 # 准备宿主机目录挂载到容器（说明：要保存有一定的存贮空间>=100G）
 1、节点数据目录：mkdir -p /data/yz-node/data
+
 2、钱包目录：mkdir -p /data/yz-node/wallet
 
 # 启动运行docker镜像
 1、回到上上级目录，即项目目录nftnode
+
 2、执行赋予脚本文件执行权限命令：sudo chmod +x ./start_yz_chain.sh
+
 3、执行脚本命令：./start_yz_chain.sh
+
 4、docker正常运行后，如需提供对外的rpc及p2p通迅，请开启宿主机防火墙的8888和9010端口
 
 # 命令行命令
 1、和链交互、管理钱包：clenft
+
 2、区块产生、操作链API：nodenft
+
 3、和钱包交互，用于存储私钥：ksdnft
 
 # 钱包及账号的操作
@@ -57,9 +65,13 @@ git clone https://github.com/yzsoft-eth/nftnode.git
 域名：nft.chinaqking.com/v1
 
 1、获取链当前区块的最新高度
+
 调用url：/chain/get_info
+
 调用方法：POST
+
 调用参数：无
+
 返回值：
    返回包含当前链区块最新高度的总体信息
 
@@ -85,7 +97,9 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_info
 
 2、查询指定区块的详细数据
 调用url：/chain/get_block
+
 调用方法：POST
+
 调用参数：JSON Object
 
 
@@ -106,12 +120,16 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_block -d '{
 
 3、查询指定账号的描述信息
 调用url：/chain/get_account
+
 调用方法：POST
+
 调用参数：JSON Object
 {
   "account_name": "账号名称，字符串"
 }
+
 返回值：返回描述账号信息的JSON对象
+
 示例：
 curl -X POST https://nft.chinaqking.com/v1/chain/get_account -d '{ 
     "account_name": "yzsoft"
@@ -119,14 +137,18 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_account -d '{
 
 4、查询指定账户的代币余额信息
 调用url：/chain/get_currency_balance
+
 调用方法：POST
+
 调用参数：JSON Object
 {
   "code":"代币合约托管账户名称，字符串",
   "account": "要查询账户的名称，字符串",
   "symbol": "要查询的代码符号，字符串"
 }
+
 返回值：返回指定账号所持有的代币余额
+
 示例：
 curl -X POST https://nft.chinaqking.com/v1/chain/get_currency_balance -d '{ 
   "code":"nftio.nftc",
@@ -136,12 +158,16 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_currency_balance -d '{
 
 5、查询历史交易数据
 调用url：/history/get_transaction
+
 调用方法：POST
+
 调用参数：JSON Object
 {
   "id": "交易ID，字符串"
 }
+
 返回值：查询到交易描述的JSON对象
+
 示例：
 curl -X POST https://nft.chinaqking.com/v1/history/get_transaction -d '{ 
     "id": "3f639408decbe6ac60d62dfcd13dd3fabdc867f206e56afd7ef203299b86a27a"
@@ -149,7 +175,9 @@ curl -X POST https://nft.chinaqking.com/v1/history/get_transaction -d '{
 
 6、提交交易数据到链上
 调用url：/chain/push_transaction
+
 调用方法：POST
+
 调用参数：JSON Object
 {
   "signatures"："签名数组",

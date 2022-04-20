@@ -141,34 +141,48 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_account -d '{
 }'
 
 4、查询指定账户的代币余额信息
+
 调用url：/chain/get_currency_balance
 
 调用方法：POST
 
 调用参数：JSON Object
+
 {
+
   "code":"代币合约托管账户名称，字符串",
+
   "account": "要查询账户的名称，字符串",
+
   "symbol": "要查询的代码符号，字符串"
+
 }
 
 返回值：返回指定账号所持有的代币余额
 
 示例：
 curl -X POST https://nft.chinaqking.com/v1/chain/get_currency_balance -d '{ 
+
   "code":"nftio.nftc",
+
   "account": "guang1234555",
+
   "symbol": "NFTC"
+
 }'
 
 5、查询历史交易数据
+
 调用url：/history/get_transaction
 
 调用方法：POST
 
 调用参数：JSON Object
+
 {
+
   "id": "交易ID，字符串"
+
 }
 
 返回值：查询到交易描述的JSON对象
@@ -179,16 +193,22 @@ curl -X POST https://nft.chinaqking.com/v1/history/get_transaction -d '{
 }'
 
 6、提交交易数据到链上
+
 调用url：/chain/push_transaction
 
 调用方法：POST
 
 调用参数：JSON Object
+
 {
   "signatures"："签名数组",
+
   "compression"："是否压缩格式，布尔类型，默认值：false",
+
   "packed_context_free_data"："上下文无关的数据",
+
   "packed_tx"："序列化的交易数据"
+
 }
 
 返回值：调用的返回结果包含交易ID
@@ -208,27 +228,41 @@ curl -X POST https://nft.chinaqking.com/v1/chain/push_transaction -d '{
 示例：guang1234555转账10个NFTC给cczsgt111345
 
 7.1、交易信息JSON格式序列化为BIN格式字符串
+
 curl -X POST https://nft.chinaqking.com/v1/chain/abi_json_to_bin -d '{
+
     "code":"nftio.nftc",
+
     "action":"extransfer",
+
     "args":{
+
         "from":"guang1234555",
+
         "to":"cczsgt111345",
+
         "quantity":"10.0000000 NFTC", 
+
         "memo":"buy/transfer"
+
     }
+
 }'
 
 return（获取到binargs）：{
+
     "binargs":"504a214304368d6650c8082164863f4200e1f50500000000074e4654430000000c6275792f7472616e73666572"
+
 }
 
 7.2、获取当前最新的区块编号
+
 curl -X POST https://nft.chinaqking.com/v1/chain/get_info
 
 return（获取到head_block_num）：
 
 {
+    
     "server_version":"26a4d285",
     
     "chain_id":"4e020515db057c0f6ae6dfadb134d2252c2ea8a4e8fdd4d8fd4543d23f31e558",
@@ -236,7 +270,10 @@ return（获取到head_block_num）：
     "head_block_num":5103489,
     
     "last_irreversible_block_num":5103451,
-    "last_irreversible_block_id":"004ddf5b6f837383b7b7ecb7f6db38f9b43109325f055a6392fd2ddbefd834b0","head_block_id":"004ddf81c58427c5df67e6d75b35198f88067477b4bd49dd8b07501117bd040a",
+
+    "last_irreversible_block_id":"004ddf5b6f837383b7b7ecb7f6db38f9b43109325f055a6392fd2ddbefd834b0",
+
+    "head_block_id":"004ddf81c58427c5df67e6d75b35198f88067477b4bd49dd8b07501117bd040a",
     
     "head_block_time":"2022-04-12T08:20:37.000",
     
@@ -264,8 +301,11 @@ return（获取到head_block_num）：
 
 
 7.3、获取区块详情
+
 curl -X POST https://nft.chinaqking.com/v1/chain/get_block -d '{
+
     "block_num_or_id":"5103489"
+
 }'
 
 return（获取到timestamp 和ref_block_prefix）：
@@ -277,11 +317,18 @@ return（获取到timestamp 和ref_block_prefix）：
     "producer":"yznft",
     
     "confirmed":0,
-    "previous":"004ddf8078bf7a2285b944ab3df9a9b087815e8c653aa32eef39276536297918","transaction_mroot":"0000000000000000000000000000000000000000000000000000000000000000","action_mroot":"9c9021c8b38fc5a03a938b4134b25182d2feb365e6f5e4c856750dfbbfcad441",
+
+    "previous":"004ddf8078bf7a2285b944ab3df9a9b087815e8c653aa32eef39276536297918",
+
+    "transaction_mroot":"0000000000000000000000000000000000000000000000000000000000000000",
+
+    "action_mroot":"9c9021c8b38fc5a03a938b4134b25182d2feb365e6f5e4c856750dfbbfcad441",
     
     "schedule_version":3,
     
-    "new_producers":null,"producer_signature":"SIG_K1_JxbXucjcSkjQzQED2bDeSkGK3EqXmeEKq167PNWBLhxoj6VeLh3c7zuDd1UP1vRkVaZWTkCdyLJ78G4uJtXU6jXEYaxtPK",
+    "new_producers":null,
+    
+    "producer_signature":"SIG_K1_JxbXucjcSkjQzQED2bDeSkGK3EqXmeEKq167PNWBLhxoj6VeLh3c7zuDd1UP1vRkVaZWTkCdyLJ78G4uJtXU6jXEYaxtPK",
     
     "transactions":[],
     
@@ -297,6 +344,7 @@ return（获取到timestamp 和ref_block_prefix）：
 7.4、查询/记录转账交易用户guang1234555的公钥（用于交易签名）：NFT54ReQMf7XZj9MdqusDVCRoYPaeP9p8zQ1TPqAQnUW9kjwR31uB
 
 7.5、签署交易
+
 调用URL：http://127.0.0.1:8900/v1/wallet/sign_transaction
 
 调用参数：JSON Arrary
@@ -322,7 +370,9 @@ return（获取到timestamp 和ref_block_prefix）：
     signatures："签署交易后生成的签名字符串",
     
 }]
+
 curl -X POST http://127.0.0.1:8900/v1/wallet/sign_transaction -d '[{
+
         "ref_block_num": 5103489,
         
         "ref_block_prefix": 3622201311,
@@ -413,8 +463,6 @@ return（获取signatures）：
     
 }
 
-
-
 7.6、提交交易
 
 curl -X POST https://nft.chinaqking.com/v1/chain/push_transaction -d '{ 
@@ -432,26 +480,40 @@ curl -X POST https://nft.chinaqking.com/v1/chain/push_transaction -d '{
     "context_free_actions": [],
     
     "actions": [
+
         {
+
             "account": "nftio.nftc",
+
             "name": "extransfer",
+
             "authorization": [
+
                 {
+
                     "actor": "guang1234555",
+
                     "permission": "active"
+
                 }
             ],
+
             "data": "504a214304368d6650c8082164863f4200e1f50500000000074e4654430000000c6275792f7472616e73666572"
+
         }
+
     ],
+
     "transaction_extensions": []
+
   },
+
   "signatures": [
+
         "SIG_K1_**********beJYmA**********tFmywezC**********P4V7NVnJodN**********"
         
    ]    // "签名数组"  
 }'
-
 
 return（包含交易ID：transaction_id）：
 
@@ -719,6 +781,5 @@ return（包含交易ID：transaction_id）：
         "except": null
         
     }
-    
+        
 }
-

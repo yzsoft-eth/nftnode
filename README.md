@@ -63,8 +63,10 @@ git clone https://github.com/yzsoft-eth/nftnode.git
 # 链api
 
 域名：（除特别说明外，其它默认值）
+
         公网：nft.chinaqking.com/v1
-        内网：127.0.0.1:8888/v1
+
+        内网：127.0.0.1:8888/v1        
 
 1、获取链当前区块的最新高度
 
@@ -95,6 +97,7 @@ git clone https://github.com/yzsoft-eth/nftnode.git
 }
 
 示例：
+
 curl -X POST https://nft.chinaqking.com/v1/chain/get_info
 
 2、查询指定区块的详细数据
@@ -295,6 +298,7 @@ return（获取到timestamp 和ref_block_prefix）：
 
 7.5、签署交易
 调用URL：http://127.0.0.1:8900/v1/wallet/sign_transaction
+
 调用参数：JSON Arrary
 
 [{
@@ -318,13 +322,7 @@ return（获取到timestamp 和ref_block_prefix）：
     signatures："签署交易后生成的签名字符串",
     
 }]
-<<<<<<< HEAD
 curl -X POST http://127.0.0.1:8900/v1/wallet/sign_transaction -d '[{
-=======
-
-curl -X POST https://nft.chinaqking.com/v1/wallet/sign_transaction -d '[{
-
->>>>>>> e9cc4f96bbc70725ca0ab6927cea45f1b364f0d1
         "ref_block_num": 5103489,
         
         "ref_block_prefix": 3622201311,

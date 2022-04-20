@@ -43,7 +43,9 @@ git clone https://github.com/yzsoft-eth/nftnode.git
 
 # 链api
 
-域名：nft.chinaqking.com/v1
+域名：（除特别说明外，其它默认值）
+        公网：nft.chinaqking.com/v1
+        内网：127.0.0.1:8888/v1
 
 1、获取链当前区块的最新高度
 调用url：/chain/get_info
@@ -137,7 +139,7 @@ curl -X POST https://nft.chinaqking.com/v1/chain/push_transaction -d '{
     'transaction_id' = "交易ID"
 }
 
-7、充值/转账    // https://blog.csdn.net/akai9898/article/details/83447788
+7、充值/转账
 
 示例：guang1234555转账10个NFTC给cczsgt111345
 
@@ -197,6 +199,7 @@ return（获取到timestamp 和ref_block_prefix）：{
 7.4、查询/记录转账交易用户guang1234555的公钥（用于交易签名）：NFT54ReQMf7XZj9MdqusDVCRoYPaeP9p8zQ1TPqAQnUW9kjwR31uB
 
 7.5、签署交易
+调用URL：http://127.0.0.1:8900/v1/wallet/sign_transaction
 调用参数：JSON Arrary
 [{
     expiration："过期时间。这里将timestamp加上了60分钟。可以根据需要来增加时长",
@@ -209,7 +212,7 @@ return（获取到timestamp 和ref_block_prefix）：{
     data："之前生成的bin字符串",
     signatures："签署交易后生成的签名字符串",
 }]
-curl -X POST https://nft.chinaqking.com/v1/wallet/sign_transaction -d '[{
+curl -X POST http://127.0.0.1:8900/v1/wallet/sign_transaction -d '[{
         "ref_block_num": 5103489,
         "ref_block_prefix": 3622201311,
         "expiration": "2022-04-12T09:20:37.000",

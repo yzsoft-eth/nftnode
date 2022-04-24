@@ -33,32 +33,122 @@ git clone https://github.com/yzsoft-eth/nftnode.git
 
 3、和钱包交互，用于存储私钥：ksdnft
 
-# 钱包及账号的操作
-1、进入容器：docker exec -ti yz-chain-agent-node bash
+# 钱包 RPC Apis 操作 #https://developers.fioprotocol.io/docs/chain/fio-wallet
 
-2、创建钱包：clenft wallet create -n yzagent --to-console
-   记录并保存下屏幕上显示的钱包密码（如：PW5********************bFE4Sw）
-   
-3、创建公私密钥对并塞入钱包：clenft wallet create_key -n  yzagent
-   Copy屏幕上显示以NFT开头的密钥对公钥（如：NFT********************DodH）
-   
-4、将上步的公钥以及需要创建的联盟账号名提供给我们，由我们平台创建及激活联盟账号
+URL：http://127.0.0.1:8900/v1/wallet
 
-5、查看钱包中的密钥对，需要输入钱包密码解锁：clenft wallet private_keys
-     执行上述命令后，按提示在password: 后输入钱包密码，可获取到钱包里全部的公私钥对
-    
-     password: [[
-        
-        "NFT****************************************************************",
-        
-        "5Hp****************************************************************"
-        
-    ]]
-    
-6、退出docker容器，回到宿主机：exit
+1、新建钱包：
+接口地址：/create
+调用方法：POST
+调用参数：钱包名称
+返回值：钱包密码
+示例：
+curl -X POST   http://127.0.0.1:8900/v1/wallet/create   -H 'Cache-Control: no-cache'   -H 'Content-Type: application/json'  -d '"yzagent"'
+# 返回钱包密码字符串，请妥善保证，用于后续的钱包解锁
+"PW5*******************************"
 
-说明：上述各步操作，如提示钱包锁定，请使用命令解锁钱包：clenft wallet unlock -n yzagent --password PW5********************bFE4Sw
+2、打开已存在钱包：
+接口地址：/open
+调用方法：POST
+调用参数：钱包名称
+返回值：成功，返回空括号
+示例：
+curl -X POST   http://127.0.0.1:8900/v1/wallet/open   -H 'Cache-Control: no-cache'   -H 'Content-Type: application/json'  -d '"yzagent"'
+# 打开成功，返回空括号
+{}
 
+3、锁定钱包：
+接口地址：/lock
+调用方法：POST
+调用参数：钱包名称
+返回值：成功，返回空括号
+示例：
+示例：
+curl -X POST   http://127.0.0.1:8900/v1/wallet/lock   -H 'Cache-Control: no-cache'   -H 'Content-Type: application/json'  -d '"yzagent"'
+# 锁定成功，返回空括号
+{}
+
+4、锁定所有已解锁的钱包：
+接口地址：/lock_all
+调用方法：GET
+调用参数：无
+返回值：成功，返回空括号
+示例：
+curl http://127.0.0.1:8900/v1/wallet/lock_all
+# 锁定成功，返回空括号
+{}
+
+5、解锁钱包：
+接口地址：/unlock
+调用方法：POST
+调用参数：钱包名称，钱包密码（上面新建钱包时返回的密码字符串）
+返回值：成功，返回空括号
+示例：
+curl -X POST http://127.0.0.1:8900/v1/wallet/unlock   -H 'Cache-Control: no-cache'   -H 'Content-Type: application/json'  -d '["yzagent", "PW5*******************************"]'
+# 锁定成功，返回空括号
+{}
+
+6、导入私钥：
+接口地址：/import_key
+调用方法：POST
+调用参数：钱包名称，私钥
+返回值：成功，返回空括号
+示例：
+curl -X POST http://127.0.0.1:8900/v1/wallet/import_key -H 'Cache-Control: no-cache'   -H 'Content-Type: application/json'  -d '["yzagent", "私钥"]'
+# 成功，返回空括号
+{}
+
+7、移除钱包私钥：
+接口地址：/remove_key 
+调用方法：POST
+调用参数：钱包名称，钱包密码，私钥
+返回值：成功，返回空括号
+示例：
+curl -X POST http://127.0.0.1:8900/v1/wallet/remove_key -H 'Cache-Control: no-cache'   -H 'Content-Type: application/json'  -d '["yzagent", "钱包密码", "私钥"]'
+# 成功，返回空括号
+{}
+
+8、创建公私密钥对并塞入钱包：
+接口地址：/create_key 
+调用方法：POST
+调用参数：钱包名称，密钥类型（指定为K1）
+返回值：返回与新私钥关联的 NFT 公钥
+示例：
+curl -X POST http://127.0.0.1:8900/v1/wallet/create_key  -H 'Cache-Control: no-cache'   -H 'Content-Type: application/json'  -d '["yzagent", "K1"]'
+# 成功，返回关联的 NFT 公钥
+"NFT*******************************"
+说明：
+成功建立公私钥对后，请将上述以NFT开头的公钥以及需要创建的联盟账号名提供给我们，由我们平台创建并激活联盟账号
+
+9、列表显示已打开的钱包：
+接口地址：/list_wallets 
+调用方法：GET
+调用参数：无
+返回值：返回打开的钱包数组
+示例：
+curl http://127.0.0.1:8900/v1/wallet/list_wallets
+# 成功，返回打开的钱包数组，钱包标有“*”代表此钱包已解锁
+["yzagent *"]
+
+10、列表显示所有解锁钱包的公钥/私钥对：
+接口地址：/list_keys 
+调用方法：POST
+调用参数：钱包名称，钱包密码
+返回值：返回钱包里的 NFT 公钥/私钥对数组
+示例：
+curl -X POST http://127.0.0.1:8900/v1/wallet/list_keys -H 'Cache-Control: no-cache' -H 'Content-Type: application/json'  -d '["yzagent", "钱包密码"]'
+# 成功，返回钱包里的 NFT 公钥/私钥对数组
+[["NFT*******************************","5JW*******************************"]]
+
+11、列表显示钱包以 NFT 为前缀的公钥：
+接口地址：/get_public_keys 
+调用方法：POST
+调用参数：钱包名称，钱包密码
+返回值：返回钱包里以 NFT 为前缀的公钥数组
+示例：
+curl -X POST http://127.0.0.1:8900/v1/wallet/get_public_keys -H 'Cache-Control: no-cache'   -H 'Content-Type: application/json'  -d '["yzagent", "钱包密码"]'
+# 成功，返回钱包里以 NFT 为前缀的公钥数组
+[["NFT*******************************"]]
 
 # 链api
 
@@ -223,7 +313,7 @@ curl -X POST https://nft.chinaqking.com/v1/chain/push_transaction -d '{
     'transaction_id' = "交易ID"
 }
 
-7、充值/转账
+7、充值/转账    // https://blog.csdn.net/akai9898/article/details/83447788
 
 示例：guang1234555转账10个NFTC给cczsgt111345
 

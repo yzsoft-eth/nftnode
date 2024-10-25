@@ -33,9 +33,13 @@ Active 权限用于日常操作，如转账和投票。
 
 # 硬件环境
 1、主机：阿里云或腾讯云等云服务商，主机区域最好选择 阿里云华北6区
+
 2、CPU：8核
+
 3、内存：32G
+
 4、带宽：100M
+
 5、硬盘：系统盘 40G ， 数据盘：200G
 
 # 软件环境
@@ -378,7 +382,7 @@ curl -X POST http://127.0.0.1:8900/v1/wallet/sign_transaction \
 域名：（除特别说明外，其它默认值）
 
         公网：nft.chinaqking.com/v1
-
+    
         内网：127.0.0.1:8888/v1
 
 1、获取与节点相关的最新信息
@@ -400,8 +404,9 @@ curl -X POST http://127.0.0.1:8900/v1/wallet/sign_transaction \
 }
 
 示例：
-
+```bash
 curl -X POST https://nft.chinaqking.com/v1/chain/get_info
+```
 
 2、查询指定区块的详细数据
 
@@ -417,10 +422,11 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_info
 返回值：返回查询到描述指定区块数据的JSON对象
 
 示例：
-
+```bash
 curl -X POST https://nft.chinaqking.com/v1/chain/get_block -d '{
     "block_num_or_id": "10444813"
 }'
+```
 
 3、获取一个区块的信息
 
@@ -436,10 +442,11 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_block -d '{
 返回值：与get_block类似，但返回块数据的固定大小的较小子集。
 
 示例：
-
+```bash
 curl -X POST https://nft.chinaqking.com/v1/chain/get_block_info -d '{ 
     "block_num": "10444813"
 }'
+```
 
 4、获取账户的信息
 
@@ -455,9 +462,11 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_block_info -d '{
 返回值：返回描述账号信息的JSON对象
 
 示例：
+```bash
 curl -X POST https://nft.chinaqking.com/v1/chain/get_account -d '{
     "account_name": "yzsoft"
 }'
+```
 
 5、根据账户名获取智能合约的 ABI
 
@@ -473,9 +482,11 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_account -d '{
 返回值：返回描述智能合约代码信息的JSON对象
 
 示例：
+```bash
 curl -X POST https://nft.chinaqking.com/v1/chain/get_abi -d '{ 
     "account_name": "nftio.token"
 }'
+```
 
 6、获取智能合约代码
 
@@ -492,10 +503,12 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_abi -d '{
 返回值：返回描述智能合约 WASM 代码的JSON对象
 
 示例：
+```bash
 curl -X POST https://nft.chinaqking.com/v1/chain/get_code -d '{ 
   "account_name": "nftio.token",
 	"code_as_wasm":1
 }'
+```
 
 7、获取包含智能合约 abi 的对象。
 
@@ -511,9 +524,11 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_code -d '{
 返回值：返回包含智能合约 abi 的对象。
 
 示例：
+```bash
 curl -X POST https://nft.chinaqking.com/v1/chain/get_raw_abi -d '{ 
     "account_name": "nftio.token"
 }'
+```
 
 8、查询指定账户的代币余额信息
 
@@ -531,11 +546,13 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_raw_abi -d '{
 返回值：返回指定账号所持有的代币余额
 
 示例：
+```bash
 curl -X POST https://nft.chinaqking.com/v1/chain/get_currency_balance -d '{
   "code":"nftio.nftc",
   "account": "guang1234555",
   "symbol": "NFTC"
 }'
+```
 
 9、查询代币发行信息
 
@@ -552,10 +569,12 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_currency_balance -d '{
 返回值：返回代币的统计信息
 
 示例：
+```bash
 curl -X POST https://nft.chinaqking.com/v1/chain/get_currency_stats -d '{
   "code":"nftio.nftc",
   "symbol": "NFTC"
 }'
+```
 
 10、调用返回签名一个交易时需要的公钥清单
 
@@ -572,6 +591,7 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_currency_stats -d '{
 返回值：返回一组必须的用于签名的公钥
 
 示例：
+```bash
 curl -X POST https://nft.chinaqking.com/v1/chain/get_required_keys -d '{ 
     "transaction": {
         "ref_block_num": 13374721,  
@@ -597,6 +617,7 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_required_keys -d '{
         "NFT692YHJvAKtbmS77N3uTS2vqc1b24jip6vyc24tM3zSprdUia2R"
     ]
 }'
+```
 
 11、获取生产者
 
@@ -614,11 +635,13 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_required_keys -d '{
 返回值：生产者对象数组
 
 示例：
+```bash
 curl -X POST https://nft.chinaqking.com/v1/chain/get_producers -d '{
     "limit": 10,
     "lower_bound": 0,
     "json": true
 }'
+```
 
 12、根据账户名检索合约的原始代码和 ABI
 
@@ -634,9 +657,11 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_producers -d '{
 返回值：合约的原始代码和 ABI
 
 示例：
+```bash
 curl -X POST https://nft.chinaqking.com/v1/chain/get_raw_code_and_abi -d '{ 
     "account_name": "nftio.nftc"
 }'
+```
 
 13、按范围检索表
 
@@ -657,11 +682,13 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_raw_code_and_abi -d '{
 返回值：返回特定合约账户名称的可用表及其给定范围。对于查看表中包含哪些条目以及该表中的行数很有用。
 
 示例：
+```bash
 curl -X POST https://nft.chinaqking.com/v1/chain/get_table_by_scope -d '{ 
   "code": "nftio.token",
   "table": "accounts",
   "limit": 10
 }'
+```
 
 14、获取表行
 
@@ -682,11 +709,13 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_table_by_scope -d '{
 返回值：返回表中的行
 
 示例：
+```bash
 curl -X POST https://nft.chinaqking.com/v1/chain/get_table_rows -d '{ 
   "code": "nftio.token",
   "table": "accounts",
   "scope": "guang1234555"
 }'
+```
 
 15、获取操作数据序列化后对象二进制数据。
 
@@ -704,6 +733,7 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_table_rows -d '{
 返回值：{ "binargs": "序列化后的二进制数据"}
 
 示例：
+```bash
 curl -X POST https://nft.chinaqking.com/v1/chain/abi_json_to_bin -d '{ 
   "code":"nftio.nftc",
   "action":"extransfer",
@@ -714,6 +744,7 @@ curl -X POST https://nft.chinaqking.com/v1/chain/abi_json_to_bin -d '{
       "memo":"buy/transfer"
   }
 }'
+```
 
 16、获取反序列化操作数据的对象。
 
@@ -731,11 +762,13 @@ curl -X POST https://nft.chinaqking.com/v1/chain/abi_json_to_bin -d '{
 返回值：包含反序列化操作数据的对象。
 
 示例：
+```bash
 curl -X POST https://nft.chinaqking.com/chain/abi_bin_to_json -d '{ 
   "code": "nftio.nftc",
   "action": "extransfer",
   "binargs": "000000b54e9d34f550c8082164863f428096980000000000074e4654430000000c6275792f7472616e73666572"
 }'
+```
 
 17、查询历史交易数据
 
@@ -751,9 +784,11 @@ curl -X POST https://nft.chinaqking.com/chain/abi_bin_to_json -d '{
 返回值：查询到交易描述的JSON对象
 
 示例：
+```bash
 curl -X POST https://nft.chinaqking.com/v1/history/get_transaction -d '{
     "id": "3f639408decbe6ac60d62dfcd13dd3fabdc867f206e56afd7ef203299b86a27a"
 }'
+```
 
 18、提交交易数据到链上
 
@@ -772,21 +807,24 @@ curl -X POST https://nft.chinaqking.com/v1/history/get_transaction -d '{
 返回值：调用的返回结果包含交易ID
 
 示例：
+```bash
 curl -X POST https://nft.chinaqking.com/v1/chain/push_transaction -d '{
     ...
 }'
+```
 
 返回结果：
 {
     'transaction_id' = "交易ID"
 }
 
-19、充值/转账    // https://blog.csdn.net/akai9898/article/details/83447788
+19、充值/转账
 
 示例：guang1234555转账10个NFTC给cczsgt111345
 
 19.1、交易信息JSON格式序列化为BIN格式字符串
 
+```bash
 curl -X POST https://nft.chinaqking.com/v1/chain/abi_json_to_bin -d '{
     "code":"nftio.nftc",
     "action":"extransfer",
@@ -797,6 +835,7 @@ curl -X POST https://nft.chinaqking.com/v1/chain/abi_json_to_bin -d '{
         "memo":"buy/transfer"
     }
 }'
+```
 
 return（获取到binargs）：{
     "binargs":"504a214304368d6650c8082164863f4200e1f50500000000074e4654430000000c6275792f7472616e73666572"
@@ -804,7 +843,9 @@ return（获取到binargs）：{
 
 19.2、获取当前最新的区块编号
 
+```bash
 curl -X POST https://nft.chinaqking.com/v1/chain/get_info
+```
 
 return（获取到head_block_num）：
 {
@@ -830,9 +871,11 @@ return（获取到head_block_num）：
 
 19.3、获取区块详情
 
+```bash
 curl -X POST https://nft.chinaqking.com/v1/chain/get_block -d '{
     "block_num_or_id":"5103489"
 }'
+```
 
 return（获取到timestamp 和ref_block_prefix）：
 {
@@ -870,6 +913,7 @@ return（获取到timestamp 和ref_block_prefix）：
     signatures："签署交易后生成的签名字符串",
 }]
 
+```bash
 curl -X POST http://127.0.0.1:8900/v1/wallet/sign_transaction -d '[
   {
     "ref_block_num": 5103489,
@@ -889,6 +933,7 @@ curl -X POST http://127.0.0.1:8900/v1/wallet/sign_transaction -d '[
   ["NFT54ReQMf7XZj9MdqusDVCRoYPaeP9p8zQ1TPqAQnUW9kjwR31uB"],
   "4e020515db057c0f6ae6dfadb134d2252c2ea8a4e8fdd4d8fd4543d23f31e558"
 ]'
+```
 
 return（获取signatures）：
 {
@@ -919,6 +964,7 @@ return（获取signatures）：
 
 19.6、提交交易
 
+```bash
 curl -X POST https://nft.chinaqking.com/v1/chain/push_transaction -d '{
   "compression": "none",    // "是否压缩格式，布尔类型，默认值：false"
   "transaction": 
@@ -944,6 +990,7 @@ curl -X POST https://nft.chinaqking.com/v1/chain/push_transaction -d '{
   },
   "signatures": [ "SIG_K1_**********beJYmA**********tFmywezC**********P4V7NVnJodN**********" ]    // "签名数组"
 }'
+```
 
 return（包含交易ID：transaction_id）：
 {

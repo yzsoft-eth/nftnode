@@ -389,23 +389,14 @@ curl -X POST http://127.0.0.1:8900/v1/wallet/sign_transaction \
 
 调用参数：无
 
-返回值：
-   返回包含当前链区块最新高度的节点相关信息
-
-   {
-
-      "server_version": "节点版本",
-
-      "head_block_num": "链头区块序号",
-
-      "lase_irreversible_block_num": "不可逆区块号",
-
-      "head_block_id": "链头区块ID",
-
-      "head_block_time": "链头区块生成时间",
-
-      "head_block_producer": "链头区块出块账号"
-
+返回值：返回包含当前链区块最新高度的节点相关信息
+{
+  "server_version": "节点版本",
+  "head_block_num": "链头区块序号",
+  "lase_irreversible_block_num": "不可逆区块号",
+  "head_block_id": "链头区块ID",
+  "head_block_time": "链头区块生成时间",
+  "head_block_producer": "链头区块出块账号"
 }
 
 示例：
@@ -419,11 +410,8 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_info
 调用方法：POST
 
 调用参数：JSON Object
-
 {
-
-    "block_num_or_id": "字符串，要提取数据的区块序号或ID"
-
+  "block_num_or_id": "字符串，要提取数据的区块序号或ID"
 }
 
 返回值：返回查询到描述指定区块数据的JSON对象
@@ -441,11 +429,8 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_block -d '{
 调用方法：POST
 
 调用参数：JSON Object
-
 {
-
-    "block_num": "字符串，要提取数据的区块序号或ID"
-  
+  "block_num": "字符串，要提取数据的区块序号或ID"
 }
 
 返回值：与get_block类似，但返回块数据的固定大小的较小子集。
@@ -508,7 +493,7 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_abi -d '{
 
 示例：
 curl -X POST https://nft.chinaqking.com/v1/chain/get_code -d '{ 
-    "account_name": "nftio.token",
+  "account_name": "nftio.token",
 	"code_as_wasm":1
 }'
 
@@ -520,7 +505,7 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_code -d '{
 
 调用参数：JSON Object
 {
-    "account_name": "账号名称，字符串"
+  "account_name": "账号名称，字符串"
 }
 
 返回值：返回包含智能合约 abi 的对象。
@@ -537,28 +522,19 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_raw_abi -d '{
 调用方法：POST
 
 调用参数：JSON Object
-
 {
-
   "code":"代币合约托管账户名称，字符串",
-
   "account": "要查询账户的名称，字符串",
-
   "symbol": "要查询的代码符号，字符串"
-
 }
 
 返回值：返回指定账号所持有的代币余额
 
 示例：
 curl -X POST https://nft.chinaqking.com/v1/chain/get_currency_balance -d '{
-
   "code":"nftio.nftc",
-
   "account": "guang1234555",
-
   "symbol": "NFTC"
-
 }'
 
 9、查询代币发行信息
@@ -568,23 +544,17 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_currency_balance -d '{
 调用方法：POST
 
 调用参数：JSON Object
-
 {
-
   "code":"代币合约托管账户名称，字符串",
   "symbol": "要查询的代码符号，字符串"
-
 }
 
 返回值：返回代币的统计信息
 
 示例：
-curl -X POST https://nft.chinaqking.com/v1/chain/get_currency_stats -d '{ 
-
+curl -X POST https://nft.chinaqking.com/v1/chain/get_currency_stats -d '{
   "code":"nftio.nftc",
-
   "symbol": "NFTC"
-
 }'
 
 10、调用返回签名一个交易时需要的公钥清单
@@ -594,13 +564,9 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_currency_stats -d '{
 调用方法：POST
 
 调用参数：JSON Object
-
 {
-
   "transaction": "交易数据，JSON对象"
-
   "available_keys": "可用公钥，数组"
-
 }
 
 返回值：返回一组必须的用于签名的公钥
@@ -639,15 +605,10 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_required_keys -d '{
 调用方法：POST
 
 调用参数：JSON Object
-
 {
-
   "limit": "返回数量",
-
   "lower_bound": "起始位置",
-
   "json": "布尔值，返回 JSON 格式的结果"
-
 }
 
 返回值：生产者对象数组
@@ -666,18 +627,14 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_producers -d '{
 调用方法：POST
 
 调用参数：JSON Object
-
 {
-
   "account_name": "账户名称，字符串"
-
 }
 
 返回值：合约的原始代码和 ABI
 
 示例：
-curl -X POST https://nft.chinaqking.com/v1/chain/get_raw_code_and_abi
- -d '{ 
+curl -X POST https://nft.chinaqking.com/v1/chain/get_raw_code_and_abi -d '{ 
     "account_name": "nftio.nftc"
 }'
 
@@ -688,28 +645,19 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_raw_code_and_abi
 调用方法：POST
 
 调用参数：JSON Object
-
 {
-
   "code": "表数据合约账号，字符串",
-
   "table": "表名，字符串",
-
   "lower_bound": "表行中最低的匹配起点。对于从前向后看很有用。字符串",
-
   "upper_bound": "表行中的最高匹配点。对于从后向前看很有用。字符串",
-
   "limit": "要返回的数量，整数",
-
-  "reverse": "返回结果的排序顺序,布尔值",
-
+  "reverse": "返回结果的排序顺序,布尔值"
 }
 
 返回值：返回特定合约账户名称的可用表及其给定范围。对于查看表中包含哪些条目以及该表中的行数很有用。
 
 示例：
-curl -X POST https://nft.chinaqking.com/v1/chain/get_table_by_scope
- -d '{ 
+curl -X POST https://nft.chinaqking.com/v1/chain/get_table_by_scope -d '{ 
   "code": "nftio.token",
   "table": "accounts",
   "limit": 10
@@ -722,28 +670,19 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_table_by_scope
 调用方法：POST
 
 调用参数：JSON Object
-
 {
-
   "code": "表数据合约账号，字符串",
-
   "table": "表名，字符串",
-
-  "scope": "该数据所属的帐户，字符串",
-  
-  "index_position": "使用的索引的位置，接受的参数primary , secondary , tertiary , fourth , fifth , sixth , seventh , August , eighth ninth tenth，字符串",
-  
-  "key_type": "密钥类型，由 index_position 指定的键类型（例如 - uint64_t或name ），字符串",
-  
+  "scope": "该数据所属的帐户，字符串",  
+  "index_position": "使用的索引的位置，接受的参数primary , secondary , tertiary , fourth , fifth , sixth , seventh , August , eighth ninth tenth，字符串",  
+  "key_type": "密钥类型，由 index_position 指定的键类型（例如 - uint64_t或name ），字符串",  
   "encode_type": "编码类型，字符串"
-
 }
 
 返回值：返回表中的行
 
 示例：
-curl -X POST https://nft.chinaqking.com/v1/chain/get_table_rows
- -d '{ 
+curl -X POST https://nft.chinaqking.com/v1/chain/get_table_rows -d '{ 
   "code": "nftio.token",
   "table": "accounts",
   "scope": "guang1234555"
@@ -756,15 +695,10 @@ curl -X POST https://nft.chinaqking.com/v1/chain/get_table_rows
 调用方法：POST
 
 调用参数：JSON Object
-
-{
-  
+{  
   "code": "合约账号，字符串",
-
   "action": "合约行为，字符串",
-
   "args": "合约参数，JSON对象"
-
 }
 
 返回值：{ "binargs": "序列化后的二进制数据"}
@@ -788,15 +722,10 @@ curl -X POST https://nft.chinaqking.com/v1/chain/abi_json_to_bin -d '{
 调用方法：POST
 
 调用参数：JSON Object
-
 {
-
   "code": "合约账号，字符串",
-
   "action": "合约行为，字符串",
-
   "binargs": "二进制参数，字符串"
-
 }
 
 返回值：包含反序列化操作数据的对象。
@@ -815,11 +744,8 @@ curl -X POST https://nft.chinaqking.com/chain/abi_bin_to_json -d '{
 调用方法：POST
 
 调用参数：JSON Object
-
 {
-
   "id": "交易ID，字符串"
-
 }
 
 返回值：查询到交易描述的JSON对象
@@ -836,16 +762,11 @@ curl -X POST https://nft.chinaqking.com/v1/history/get_transaction -d '{
 调用方法：POST
 
 调用参数：JSON Object
-
 {
   "signatures"："签名数组",
-
   "compression"："是否压缩格式，布尔类型，默认值：false",
-
   "packed_context_free_data"："上下文无关的数据，json to hex",
-
   "packed_tx"："序列化的交易数据，Transaction object json to hex"
-
 }
 
 返回值：调用的返回结果包含交易ID
@@ -867,29 +788,18 @@ curl -X POST https://nft.chinaqking.com/v1/chain/push_transaction -d '{
 19.1、交易信息JSON格式序列化为BIN格式字符串
 
 curl -X POST https://nft.chinaqking.com/v1/chain/abi_json_to_bin -d '{
-
     "code":"nftio.nftc",
-
     "action":"extransfer",
-
     "args":{
-
         "from":"guang1234555",
-
         "to":"cczsgt111345",
-
         "quantity":"10.0000000 NFTC",
-
         "memo":"buy/transfer"
-
     }
-
 }'
 
 return（获取到binargs）：{
-
     "binargs":"504a214304368d6650c8082164863f4200e1f50500000000074e4654430000000c6275792f7472616e73666572"
-
 }
 
 19.2、获取当前最新的区块编号
@@ -897,86 +807,49 @@ return（获取到binargs）：{
 curl -X POST https://nft.chinaqking.com/v1/chain/get_info
 
 return（获取到head_block_num）：
-
 {
-
     "server_version":"26a4d285",
-
     "chain_id":"4e020515db057c0f6ae6dfadb134d2252c2ea8a4e8fdd4d8fd4543d23f31e558",
-
     "head_block_num":5103489,
-
     "last_irreversible_block_num":5103451,
-
     "last_irreversible_block_id":"004ddf5b6f837383b7b7ecb7f6db38f9b43109325f055a6392fd2ddbefd834b0",
-
     "head_block_id":"004ddf81c58427c5df67e6d75b35198f88067477b4bd49dd8b07501117bd040a",
-
     "head_block_time":"2022-04-12T08:20:37.000",
-
     "head_block_producer":"yznft",
-
     "virtual_block_cpu_limit":100000000,
-
     "virtual_block_net_limit":1048576000,
-
     "block_cpu_limit":99900,
-
     "block_net_limit":1048576,
-
     "server_version_string":"v2.1.0",
-
     "fork_db_head_block_num":5103489,
-
     "fork_db_head_block_id":"004ddf81c58427c5df67e6d75b35198f88067477b4bd49dd8b07501117bd040a",
-
     "server_full_version_string":"v2.1.0-26a4d285d0be1052d962149e431eb81500782991-dirty",
-
     "last_irreversible_block_time":"2022-04-12T08:19:59.000"
-
 }
 
 
 19.3、获取区块详情
 
 curl -X POST https://nft.chinaqking.com/v1/chain/get_block -d '{
-
     "block_num_or_id":"5103489"
-
 }'
 
 return（获取到timestamp 和ref_block_prefix）：
-
 {
-
     "timestamp":"2022-04-12T08:20:37.000",
-
     "producer":"yznft",
-
     "confirmed":0,
-
     "previous":"004ddf8078bf7a2285b944ab3df9a9b087815e8c653aa32eef39276536297918",
-
     "transaction_mroot":"0000000000000000000000000000000000000000000000000000000000000000",
-
     "action_mroot":"9c9021c8b38fc5a03a938b4134b25182d2feb365e6f5e4c856750dfbbfcad441",
-
     "schedule_version":3,
-
     "new_producers":null,
-
     "producer_signature":"SIG_K1_JxbXucjcSkjQzQED2bDeSkGK3EqXmeEKq167PNWBLhxoj6VeLh3c7zuDd1UP1vRkVaZWTkCdyLJ78G4uJtXU6jXEYaxtPK",
-
     "transactions":[],
-
     "id":"004ddf81c58427c5df67e6d75b35198f88067477b4bd49dd8b07501117bd040a",
-
     "block_num":5103489,
-
     "ref_block_prefix":3622201311
-
 }
-
 
 19.4、查询/记录转账交易用户guang1234555的公钥（用于交易签名）：NFT54ReQMf7XZj9MdqusDVCRoYPaeP9p8zQ1TPqAQnUW9kjwR31uB
 
@@ -985,438 +858,227 @@ return（获取到timestamp 和ref_block_prefix）：
 调用URL：http://127.0.0.1:8900/v1/wallet/sign_transaction
 
 调用参数：JSON Arrary
-
 [{
-
     expiration："过期时间。这里将timestamp加上了60分钟。可以根据需要来增加时长",
-
     ref_block_num："前面获取的最新区块号",
-
     ref_block_prefix："前面获取的ref_block_prefix",
-
     account："合约名称。这里是转账NFTC，使用的是nftio.nftc",
-
     name："调用的合约方法。这里调用的是转账方法transfer",
-
     actor："调用者。这里相当于转账方",
-
     permission："使用的权限类型",
-
     data："之前生成的bin字符串",
-
     signatures："签署交易后生成的签名字符串",
-
 }]
 
-curl -X POST http://127.0.0.1:8900/v1/wallet/sign_transaction -d '[{
-
-        "ref_block_num": 5103489,
-
-        "ref_block_prefix": 3622201311,
-
-        "expiration": "2022-04-12T09:20:37.000",
-
-        "actions": [{
-
-            "account": "nftio.nftc",
-
-            "name": "extransfer",
-
-            "authorization": [{
-
-                "actor": "guang1234555",
-
-                "permission": "active"
-
-            }],
-
-            "data": "504a214304368d6650c8082164863f4200e1f50500000000074e4654430000000c6275792f7472616e73666572"
-
+curl -X POST http://127.0.0.1:8900/v1/wallet/sign_transaction -d '[
+  {
+    "ref_block_num": 5103489,
+    "ref_block_prefix": 3622201311,
+    "expiration": "2022-04-12T09:20:37.000",
+    "actions": [{
+        "account": "nftio.nftc",
+        "name": "extransfer",
+        "authorization": [{
+            "actor": "guang1234555",
+            "permission": "active"
         }],
-
-        "signatures": []
-
-    },
-
-    ["NFT54ReQMf7XZj9MdqusDVCRoYPaeP9p8zQ1TPqAQnUW9kjwR31uB"],
-
-    "4e020515db057c0f6ae6dfadb134d2252c2ea8a4e8fdd4d8fd4543d23f31e558"
+        "data": "504a214304368d6650c8082164863f4200e1f50500000000074e4654430000000c6275792f7472616e73666572"
+    }],
+    "signatures": []
+  },
+  ["NFT54ReQMf7XZj9MdqusDVCRoYPaeP9p8zQ1TPqAQnUW9kjwR31uB"],
+  "4e020515db057c0f6ae6dfadb134d2252c2ea8a4e8fdd4d8fd4543d23f31e558"
 ]'
 
 return（获取signatures）：
-
 {
-
-    "expiration": "2022-04-12T09:20:37.000",
-
-    "ref_block_num": 5183489,
-
-    "ref_block_prefix": 3622201311,
-
-    "max_net_usage_words": 0,
-
-    "max_cpu_usage_ms": 0,
-
-    "delay_sec": 0,
-
-    "context_free_actions": [],
-
-    "actions": [
-
+  "expiration": "2022-04-12T09:20:37.000",
+  "ref_block_num": 5183489,
+  "ref_block_prefix": 3622201311,
+  "max_net_usage_words": 0,
+  "max_cpu_usage_ms": 0,
+  "delay_sec": 0,
+  "context_free_actions": [],
+  "actions": [
+    {
+      "account": "nftio.nftc",
+      "name": "extransfer",
+      "authorization": [
         {
-
-            "account": "nftio.nftc",
-
-            "name": "extransfer",
-
-            "authorization": [
-
-                {
-
-                    "actor": "guang1234555",
-
-                    "permission": "active"
-
-                }
-
-            ],
-
-            "data": "504a214304368d6650c8082164863f4200e1f50500000000074e4654430000000c6275792f7472616e73666572"
-
+          "actor": "guang1234555",
+          "permission": "active"
         }
-
-    ],
-
-
-    "transaction_extensions": [],
-
-    "signatures": [
-
-        "SIG_K1_**********beJYmA**********tFmywezC**********P4V7NVnJodN**********"
-
-    ],
-
-    "context_free_data": []
-
+      ],
+      "data": "504a214304368d6650c8082164863f4200e1f50500000000074e4654430000000c6275792f7472616e73666572"
+    }
+  ],
+  "transaction_extensions": [],
+  "signatures": [ "SIG_K1_**********beJYmA**********tFmywezC**********P4V7NVnJodN**********" ],
+  "context_free_data": []
 }
 
 19.6、提交交易
 
 curl -X POST https://nft.chinaqking.com/v1/chain/push_transaction -d '{
-
   "compression": "none",    // "是否压缩格式，布尔类型，默认值：false"
-
-  "transaction": {
-
+  "transaction": 
+  {
     "expiration": "2022-04-12T09:20:37.000",
-
     "ref_block_num": 5183489,
-
     "ref_block_prefix": 3622201311,
-
     "context_free_actions": [],
-
     "actions": [
-
-        {
-
-            "account": "nftio.nftc",
-
-            "name": "extransfer",
-
-            "authorization": [
-
-                {
-
-                    "actor": "guang1234555",
-
-                    "permission": "active"
-
-                }
-            ],
-
-            "data": "504a214304368d6650c8082164863f4200e1f50500000000074e4654430000000c6275792f7472616e73666572"
-
-        }
-
+      {
+        "account": "nftio.nftc",
+        "name": "extransfer",
+        "authorization": [
+          {
+            "actor": "guang1234555",
+            "permission": "active"
+          }
+        ],
+        "data": "504a214304368d6650c8082164863f4200e1f50500000000074e4654430000000c6275792f7472616e73666572"
+      }
     ],
-
     "transaction_extensions": []
-
   },
-
-  "signatures": [
-
-        "SIG_K1_**********beJYmA**********tFmywezC**********P4V7NVnJodN**********"
-
-   ]    // "签名数组"
+  "signatures": [ "SIG_K1_**********beJYmA**********tFmywezC**********P4V7NVnJodN**********" ]    // "签名数组"
 }'
 
 return（包含交易ID：transaction_id）：
-
 {
-
-    "transaction_id": "f6195473e59ee33ea50fe5f69fb4460b361e963e02613be48fbc1b536863c56e",
-
-    "processed": {
-
-        "id": "f6195473e59ee33ea50fe5f69fb4460b361e963e02613be48fbc1b536863c56e",
-
+  "transaction_id": "f6195473e59ee33ea50fe5f69fb4460b361e963e02613be48fbc1b536863c56e",
+  "processed": {
+    "id": "f6195473e59ee33ea50fe5f69fb4460b361e963e02613be48fbc1b536863c56e",
+    "receipt": {
+      "status": "executed",
+      "cpu_usage_us": 1537,
+      "net_usage_words": 17
+    },
+    "elapsed": 1537,
+    "net_usage": 136,
+    "scheduled": false,
+    "action_traces": [
+      {
         "receipt": {
-
-            "status": "executed",
-
-            "cpu_usage_us": 1537,
-
-            "net_usage_words": 17
-
+            "receiver": "nftio.nftc",
+            "act_digest": "03969694b3defe3cc1107ba4279aa3265e9e96aec1a5615b6d779498cdca63a1",
+            "global_sequence": 32142292,
+            "recv_sequence": 1716642,
+            "auth_sequence": [
+              [
+                "guang1234555",
+                45
+              ]
+            ],
+            "code_sequence": 1,
+            "abi_sequence": 1
         },
+        "act": {
+          "account": "nftio.nftc",
+          "name": "extransfer",
+          "authorization": [
+              {
+                  "actor": "guang1234555",
+                  "permission": "active"
+              }
+          ],
 
-        "elapsed": 1537,
-
-        "net_usage": 136,
-
-        "scheduled": false,
-
-        "action_traces": [
-
+          "data": {
+              "from": "guang1234555",
+              "to": "cczsgt111345",
+              "quantity":"10.0000000 NFTC",
+              "memo":"buy/transfer"
+          },
+          "hex_data": "504a214304368d66104208ffe1abaac600ca9a3b00000000074e46544300000000"
+      },
+      "elapsed": 942,
+      "cpu_usage": 0,
+      "console": "",
+      "total_cpu_usage": 0,
+      "trx_id": "f6195473e59ee33ea50fe5f69fb4460b361e963e02613be48fbc1b536863c56e",
+      "inline_traces": [
+        {
+          "receipt": {
+            "receiver": "cczsgt111345",
+            "act_digest": "03969694b3defe3cc1107ba4279aa3265e9e96aec1a5615b6d779498cdca63a1",
+            "global_sequence": 32142293,
+            "recv_sequence": 16,
+            "auth_sequence": [
+            [
+              "cczsgt111345",
+              38
+            ]
+            ],
+            "code_sequence": 3,
+            "abi_sequence": 3
+          },
+          "act": {
+            "account": "nftio.nftc",
+            "name": "extransfer",
+            "authorization": [
             {
-
-                "receipt": {
-
-                    "receiver": "nftio.nftc",
-
-                    "act_digest": "03969694b3defe3cc1107ba4279aa3265e9e96aec1a5615b6d779498cdca63a1",
-
-                    "global_sequence": 32142292,
-
-                    "recv_sequence": 1716642,
-
-                    "auth_sequence": [
-
-                        [
-
-                            "guang1234555",
-
-                            45
-
-                        ]
-
-                    ],
-
-                    "code_sequence": 1,
-
-                    "abi_sequence": 1
-
-                },
-
-                "act": {
-
-                    "account": "nftio.nftc",
-
-                    "name": "extransfer",
-
-                    "authorization": [
-
-                        {
-
-                            "actor": "guang1234555",
-
-                            "permission": "active"
-
-                        }
-
-                    ],
-
-                    "data": {
-
-                        "from": "guang1234555",
-
-                        "to": "cczsgt111345",
-
-                        "quantity":"10.0000000 NFTC",
-
-                        "memo":"buy/transfer"
-
-                    },
-
-                    "hex_data": "504a214304368d66104208ffe1abaac600ca9a3b00000000074e46544300000000"
-
-                },
-
-                "elapsed": 942,
-
-                "cpu_usage": 0,
-
-                "console": "",
-
-                "total_cpu_usage": 0,
-
-                "trx_id": "f6195473e59ee33ea50fe5f69fb4460b361e963e02613be48fbc1b536863c56e",
-
-                "inline_traces": [
-
-                    {
-
-                        "receipt": {
-
-                            "receiver": "cczsgt111345",
-
-                            "act_digest": "03969694b3defe3cc1107ba4279aa3265e9e96aec1a5615b6d779498cdca63a1",
-
-                            "global_sequence": 32142293,
-
-                            "recv_sequence": 16,
-
-                            "auth_sequence": [
-
-                                [
-                                    "cczsgt111345",
-
-                                    38
-
-                                ]
-
-                            ],
-
-                            "code_sequence": 3,
-
-                            "abi_sequence": 3
-
-                        },
-
-                        "act": {
-
-                            "account": "nftio.nftc",
-
-                            "name": "extransfer",
-
-                            "authorization": [
-
-                                {
-
-                                    "actor": "guang1234555",
-
-                                    "permission": "active"
-
-                                }
-
-                            ],
-
-                            "data": {
-
-                                "from": "guang1234555",
-
-                                "to": "cczsgt111345",
-
-                                "quantity":"10.0000000 NFTC",
-
-                                "memo":"buy/transfer"
-
-                            },
-
-                            "hex_data": "504a214304368d66104208ffe1abaac600ca9a3b00000000074e46544300000000"
-
-                        },
-
-                        "elapsed": 100,
-
-                        "cpu_usage": 0,
-
-                        "console": "",
-
-                        "total_cpu_usage": 0,
-
-                        "trx_id": "f6195473e59ee33ea50fe5f69fb4460b361e963e02613be48fbc1b536863c56e",
-
-                        "inline_traces": []
-
-                    },
-
-                    {
-
-                        "receipt": {
-
-                            "receiver": "cczsgt111345",
-
-                            "act_digest": "03969694b3defe3cc1107ba4279aa3265e9e96aec1a5615b6d779498cdca63a1",
-
-                            "global_sequence": 32142294,
-
-                            "recv_sequence": 7,
-
-                            "auth_sequence": [
-
-                                [
-                                    "cczsgt111345",
-
-                                    39
-                                ]
-
-                            ],
-
-                            "code_sequence": 3,
-
-                            "abi_sequence": 3
-
-                        },
-
-                        "act": {
-
-                            "account": "nftio.nftc",
-
-                            "name": "extransfer",
-
-                            "authorization": [
-
-                                {
-
-                                    "actor": "guang1234555",
-
-                                    "permission": "active"
-
-                                }
-
-                            ],
-
-                            "data": {
-
-                                "from": "guang1234555",
-
-                                "to": "cczsgt111345",
-
-                                "quantity":"10.0000000 NFTC",
-
-                                "memo":"buy/transfer"
-
-                            },
-
-                            "hex_data": "504a214304368d66104208ffe1abaac600ca9a3b00000000074e46544300000000"
-
-                        },
-
-                        "elapsed": 23,
-
-                        "cpu_usage": 0,
-
-                        "console": "",
-
-                        "total_cpu_usage": 0,
-
-                        "trx_id": "f6195473e59ee33ea50fe5f69fb4460b361e963e02613be48fbc1b536863c56e",
-
-                        "inline_traces": []
-
-                    }
-
-                ]
-
+              "actor": "guang1234555",
+              "permission": "active"
             }
-
-        ],
-
-        "except": null
-
+            ],
+            "data": {
+              "from": "guang1234555",
+              "to": "cczsgt111345",
+              "quantity":"10.0000000 NFTC",
+              "memo":"buy/transfer"
+            },
+            "hex_data": "504a214304368d66104208ffe1abaac600ca9a3b00000000074e46544300000000"
+          },
+          "elapsed": 100,
+          "cpu_usage": 0,
+          "console": "",
+          "total_cpu_usage": 0,
+          "trx_id": "f6195473e59ee33ea50fe5f69fb4460b361e963e02613be48fbc1b536863c56e",
+          "inline_traces": []
+        },
+        {
+          "receipt": {
+            "receiver": "cczsgt111345",
+            "act_digest": "03969694b3defe3cc1107ba4279aa3265e9e96aec1a5615b6d779498cdca63a1",
+            "global_sequence": 32142294,
+            "recv_sequence": 7,
+            "auth_sequence": [
+              [
+                "cczsgt111345",
+                39
+              ]
+            ],
+            "code_sequence": 3,
+            "abi_sequence": 3
+          },
+          "act": {
+            "account": "nftio.nftc",
+            "name": "extransfer",
+            "authorization": [
+            {
+              "actor": "guang1234555",
+              "permission": "active"
+            }
+            ],
+            "data": {
+              "from": "guang1234555",
+              "to": "cczsgt111345",
+              "quantity":"10.0000000 NFTC",
+              "memo":"buy/transfer"
+            },
+            "hex_data": "504a214304368d66104208ffe1abaac600ca9a3b00000000074e46544300000000"
+          },
+          "elapsed": 23,
+          "cpu_usage": 0,
+          "console": "",
+          "total_cpu_usage": 0,
+          "trx_id": "f6195473e59ee33ea50fe5f69fb4460b361e963e02613be48fbc1b536863c56e",
+          "inline_traces": []
+        }
+      ]
     }
-
+  ],
+  "except": null
+  }
 }
